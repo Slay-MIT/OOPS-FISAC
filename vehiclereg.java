@@ -33,6 +33,7 @@ class User implements details {
     int price;
     int tax;
     int pay;
+    char new_ask;
     User() {
         a++;
         b++;
@@ -61,6 +62,13 @@ class User implements details {
         payment_details();
         char b;
         System.out.println("Do you wish to register another vehicle? (y/n)");
+        new_ask = dis.next().charAt(0);
+        if(new_ask=='y') {
+         form_filling();
+        }
+        else {
+         return;
+        }
         
     }
     void payment_details() {
@@ -93,6 +101,7 @@ public class vehiclereg  {
         User[] obj1 = new User[15];
         System.out.println("1.User\n2.Admin\n3.Exit");
         inp = sc.nextInt();
+        while(inp!=3) {
         if(inp==1) {
             System.out.println("Do you wish to register your vehicle (y/n)");
             a = sc.next().charAt(0);
@@ -102,16 +111,17 @@ public class vehiclereg  {
                 index++;
             }
         }
-        /*else if(inp==2){
+        else if(inp==2){
             admin obj2 = new admin(obj1);
             //adminsearch obj3 = new adminsearch();
             obj2.ask();
-        }*/
-        admin obj2 = new admin(obj1);
+        }
+        //admin obj2 = new admin(obj1);
         //adminsearch obj3 = new adminsearch();
-        obj2.ask();
+        //obj2.ask();
         
     }
+        }
 
     }
 
