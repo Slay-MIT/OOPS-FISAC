@@ -39,7 +39,7 @@ class User implements details {
         System.out.println("\nEnter your name: ");
         name = dis.nextLine();
         System.out.println("\nEnter the name of the agency:\n1. AUTONOMOUS BODY\n2. CENTRAL GOVERNMENT\n3. CHARITABLE TRUST\n4. DRIVING TRAINING SCHOOL\n5. DIVYANGJAN\n6. EDUCATIONAL INSTITUTE\n7. FIRM\n8. GOVERNMENT UNDERTAKING\n9. INDIVIDUAL\n10. LOCAL AUTHORITY\n11. MULTIPLE OWNER\n12. OTHERS\n13. POLICE DEPARTMENT\n14. STATE GOVERNMENT\n15. STATE TRANSPORT CORPORATION OR DEPARTMENT] ");
-        agency = dis.nextLine();
+        agency = dis.nextInt();
         System.out.println("\nEnter the vehicle model: ");
         vehiclemodel = dis.nextLine();
         System.out.println("\nEnter the type of the vehicle: \nLMV (Light Motor Vehicle)\nMCWG (Motor Cycle With Gear) \nMCWOG (Motor Cycle Without Gear/ Scooter) \nHMV (Heavy Motor Vehicle) ");
@@ -75,25 +75,27 @@ class User implements details {
         
     }
 
-    void ask(){
-        int inp;
+    
         
 
-    }
-    void insurance(){
+    
+    int insurance(){
         System.out.println("Enter your Insurance Agency: ");
         System.out.println("1)New India Assurance\n2)National Insurance\n3)Bajaj Allianz");
+        agency=dis.nextInt();
         switch(agency){
             case 1:
+                break;
             case 2:
+                break;
             case 3:
-            break;
+                break;
             default:
-            System.out.println("Invalid Agency");
-            break;
+                System.out.println("Invalid Agency");
+                return 0;      
         }
         System.out.println("Enter License Plate number:");
-        insurancenumplate=dis.nextLine();
+        insurancenumplate=dis.next();
         if(insurancenumplate.equals(finalnumberplate)){
             switch(vehicletype){
                 case "LMV":
@@ -108,15 +110,45 @@ class User implements details {
                 case "HMV":
                     System.out.println("Rs. 50000");
                     break;
+                
             }
+            return 1;
+        }
+        else{
+            System.out.println("Incorrect License plate");
+            return 0;
         }
 
     }
+    void contact_us(){
+        System.out.println("Call the Toll-Free Number 0124-458458 or Email us at karanata_rto@gov.in");
+    }
+    void askuser(){
+        int ch=0;
+        while(ch!=4){
+            System.out.println("\n 1. Register your vehicle\n 2. Contact Us\n3. Insurance\n");
+            ch = dis.nextInt();
+            if(ch==1){
+                form_filling();
+            }
+            if(ch==2){
+                
+            }
+            if(ch==3){
+                insurance();
+            }
+            }
+    }
+    
+
+        
+
+    
     
     public void display() {
         return;
-    }
-}
+    }}
+
 
 
 class admin implements details{
@@ -197,28 +229,32 @@ class admin implements details{
         public static void main(String args[]) {
             Scanner sc = new Scanner(System.in);
             int inp;
-            int inp2;
-            char a;
             int index=0;
             User[] obj1 = new User[15];
             do {
             System.out.println("1.User\n2.Admin\n3.Exit");
             inp = sc.nextInt();
             if(inp==1) {
-                System.out.println("\n1.If you wish to register your vehicle\n2. Contact US");
-                inp2 = sc.nextInt();
-
-                
-                a = sc.next().charAt(0);
-                if(a=='y') {
-                    while(a=='y') {
-                    obj1[index] = new User();
-                    obj1[index].form_filling();
-                    index++;
-                    System.out.println("\nDo you wish to register another vehicle? (y/n)");
-                    a = sc.next().charAt(0);
+                int ch=0;
+                while(ch!=4){
+                    System.out.println("\n1. Register your vehicle\n2. Contact Us\n3. Insurance\n4. Exit");
+                    ch = sc.nextInt();
+                    if(ch==1){
+                        obj1[index] = new User();
+                        obj1[index].form_filling();
+                        index++;
                     }
-                }
+                    if(ch==2){
+                        obj1[index] = new User();
+                        obj1[index].contact_us();
+                        index++;
+                    }
+                    if(ch==3){
+                        obj1[index] = new User();
+                        obj1[index].insurance();
+                        index++;
+                    }
+                    }
             }
             else if(inp==2){
                 admin obj2 = new admin(obj1, index);
