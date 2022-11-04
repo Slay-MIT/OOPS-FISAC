@@ -19,7 +19,8 @@ class User implements details {
     static int a = -1;
     static int b = 0;
  
-    String agency;
+    int agency;
+    String insurancenumplate;
     String name;
     int idno=1;
     String vehiclemodel;
@@ -77,6 +78,38 @@ class User implements details {
     void ask(){
         int inp;
         
+
+    }
+    void insurance(){
+        System.out.println("Enter your Insurance Agency: ");
+        System.out.println("1)New India Assurance\n2)National Insurance\n3)Bajaj Allianz");
+        switch(agency){
+            case 1:
+            case 2:
+            case 3:
+            break;
+            default:
+            System.out.println("Invalid Agency");
+            break;
+        }
+        System.out.println("Enter License Plate number:");
+        insurancenumplate=dis.nextLine();
+        if(insurancenumplate.equals(finalnumberplate)){
+            switch(vehicletype){
+                case "LMV":
+                    System.out.println("Annual Payment: Rs.20000");
+                    break;
+                case "MCWG":
+                    System.out.println("Rs.15000");
+                    break;
+                case "MCWOG":
+                    System.out.println("Rs. 10000");
+                    break;    
+                case "HMV":
+                    System.out.println("Rs. 50000");
+                    break;
+            }
+        }
 
     }
     
