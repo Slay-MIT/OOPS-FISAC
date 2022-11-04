@@ -98,7 +98,7 @@ public class vehiclereg  {
             a = sc.next().charAt(0);
             if(a=='y') {
                 while(a=='y') {
-                obj1[10] = new User();
+                obj1[index] = new User();
                 obj1[index].form_filling();
                 index++;
                 System.out.println("\nDo you wish to register another vehicle? (y/n)");
